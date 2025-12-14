@@ -12,7 +12,7 @@
     "watch:static": "cpx \"src/static/**/*\" dist",
     "prebuild": "rimraf dist _site",
     "build": "npm-run-all build:*",
-    "build:scss": "sass src/styles:dist/css --style compressed",
+    "build:scss": "sass src/styles:dist/css --style --no-source-map compressed",
     "build:pug": "pug src/pug/[!_]*.pug -o dist --pretty",
     "build:11ty": "npx @11ty/eleventy",
     "build:static": "cpx \"src/static/**/*\" _site"
