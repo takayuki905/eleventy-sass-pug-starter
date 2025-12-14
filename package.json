@@ -4,22 +4,28 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "predev": "rimraf dist",
     "dev": "npm-run-all -p watch:*",
     "watch:scss": "sass --watch src/styles:dist/css",
-    "watch:pug": "pug --watch src/pug -o dist/html",
+    "watch:pug": "pug --watch src/pug/[!_]*.pug -o dist --pretty",
     "watch:11ty": "npx @11ty/eleventy --serve",
+    "watch:static": "cpx \"src/static/**/*\" dist",
+    "prebuild": "rimraf dist _site",
     "build": "npm-run-all build:*",
     "build:scss": "sass src/styles:dist/css --style compressed",
-    "build:pug": "pug src/pug -o dist/html",
-    "build:11ty": "npx @11ty/eleventy"
+    "build:pug": "pug src/pug/[!_]*.pug -o dist --pretty",
+    "build:11ty": "npx @11ty/eleventy",
+    "build:static": "cpx \"src/static/**/*\" _site"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
+    "cpx": "^1.5.0",
     "npm-run-all": "^4.1.5",
     "pug-cli": "^1.0.0-alpha6",
+    "rimraf": "^6.1.2",
     "sass": "^1.96.0"
   }
 }
