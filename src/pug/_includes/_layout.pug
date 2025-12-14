@@ -1,0 +1,28 @@
+doctype html
+html(lang="ja")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    // Eleventyのデータからページタイトルを取得
+    title #{title} | My Site
+    link(rel="stylesheet" href="/dist/css/style.css")
+
+  body
+    // 共通ヘッダー部品 (もしあれば include も利用)
+    header
+      h1
+        a(href="/") Site Logo
+      // block header で、この部分をページごとに上書きできるように定義
+      block header
+
+    // ページごとの主要なコンテンツが挿入される場所
+    main
+      // block content が最も重要。個々のページコンテンツがここに挿入されます
+      block content
+
+    // 共通フッター部品
+    footer
+      p &copy; #{new Date().getFullYear()} All Rights Reserved.
+
+    // ページごとのJavaScriptを挿入するブロック
+    block scripts
